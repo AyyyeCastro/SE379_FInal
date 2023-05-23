@@ -1,16 +1,21 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+
 const baseURL = 'http://localhost:3000';
 
+interface UseFetchResponse {
+  data: any;
+  loading: boolean;
+}
 
-const useFetch = (url) => {
-  const [data, setData] = useState();
+const useFetch = (url: string): UseFetchResponse => {
+  const [data, setData] = useState<any>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`${baseURL}${url}`);
+        const response: AxiosResponse<any> = await axios.get(`${baseURL}${url}`);
         setData(response.data);
       } catch (error) {
         console.log('An error occurred:', error);
@@ -22,11 +27,7 @@ const useFetch = (url) => {
     getData();
   }, [url]);
 
-  return { data, loading }
-}
+  return { data, loading };
+};
 
 export default useFetch;
-
-
-// REMEMBER: async await needs to be used, not .then -> promise. 
-// useFetch needs to be used for the project, do not call upon local file data.

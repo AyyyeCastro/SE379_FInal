@@ -1,14 +1,14 @@
-import { useParams } from "react-router-dom";
-import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { ThemeContext } from "../context/themeContext";
 import useFetch from "../hooks/useFetch";
+
 
 const ProductDetail = () => {
   // THEME
   const { theme } = useContext(ThemeContext);
 
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { data: product, loading } = useFetch(`/products/${id}`);
 
@@ -18,6 +18,10 @@ const ProductDetail = () => {
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!product) {
+    return <div>Product not found.</div>;
   }
 
   return (

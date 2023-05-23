@@ -1,12 +1,10 @@
 import "./App.css";
 import { useNavigate, Outlet } from "react-router-dom";
 import React, { useContext } from "react";
-import Card from "./components/Card";
-import Button from "./components/Button";
 import ThemeSelect from "./components/ThemeSelect";
 import { ThemeContext, themes } from "./context/themeContext";
 
-function App() {
+const App: React.FC = () => {
   // THEMES
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -49,6 +47,6 @@ function App() {
       <Outlet />
     </div>
   );
-}
+};
 
 export default App;

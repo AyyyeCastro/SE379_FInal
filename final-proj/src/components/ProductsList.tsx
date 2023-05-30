@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ThemeContext } from "../context/themeContext";
 import useFetch from "../hooks/useFetch";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 interface Product {
   id: number;
@@ -16,16 +19,18 @@ const ProductsList = () => {
   const { data: products } = useFetch('/products');
 
   return (
-    <ul className="prodList" style={{ color: theme.foreground, background: theme.background, border: theme.border }}>
-      {products && products.map((product: Product) => (
-        <li key={product.id} className="prodItem" style={{ color: theme.foreground, background: theme.background, border: theme.border }}>
-          <Link to={`/product/${product.id}`}>
-            <img src={product.image} alt="image.png" className="thumbnails" />
-            <h2 style={{ color: theme.color }}>{product.title}</h2>
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <Container className="plParent">
+      <Row>
+        {products && products.map((product: Product) => (
+          <Col key={product.id} md={4} className="p1Child1" style={{ color: theme.foreground, background: theme.background, border: theme.border }}>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.image} alt="image.png" className="thumbnails" />
+              <h2 style={{ color: theme.color }}>{product.title}</h2>
+            </Link>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

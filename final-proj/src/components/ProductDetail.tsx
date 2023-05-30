@@ -1,8 +1,11 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../context/themeContext';
+import useFetch from '../hooks/useFetch';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/cartSlice';
 import { useParams, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { ThemeContext } from "../context/themeContext";
-import useFetch from "../hooks/useFetch";
-
 
 const ProductDetail = () => {
   // THEME
@@ -11,9 +14,16 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { data: product, loading } = useFetch(`/products/${id}`);
+  const dispatch = useDispatch();
 
   const handleShowProducts = () => {
-    navigate("../products"); // url
+    navigate('../products'); // url
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(addToCart({ productId: product.id, product }));
+    }
   };
 
   if (loading) {
@@ -25,22 +35,20 @@ const ProductDetail = () => {
   }
 
   return (
-    <div style={{ display: "flex", color: theme.foreground, background: theme.background, border: theme.border }} className="prodContainer">
-      <button onClick={() => handleShowProducts()} className="btnBack">
-        Go Back
-      </button>
-
-      <img
-        src={product.image}
-        alt={product.title}
-        className="prodDetailImage"
-      />
+    <Container className="pdParent" style={{ color: theme.foreground, background: theme.background, border: theme.border }}>
+      <img src={product.image} alt={product.title} className="prodDetailImage" />
       <div>
         <h2 className="prodTitle">{product.title}</h2>
         <p className="prodDesc">{product.description}</p>
         <p className="prodPrice">${product.price}</p>
+        <Button onClick={handleAddToCart} className="btn btn-primary">
+          Add to Cart
+        </Button>
       </div>
-    </div>
+      <Button onClick={() => handleShowProducts()} className="btn btn-outline btnGoback">
+        Go Back
+      </Button>
+    </Container>
   );
 };
 

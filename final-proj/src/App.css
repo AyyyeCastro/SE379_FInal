@@ -1,0 +1,187 @@
+body {
+  transition-duration: 0.2s;
+  height: 100%;
+}
+
+.App a {
+  text-decoration: none; /* remove underline */
+}
+.ocean a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Header */
+.header {
+  display: flex;
+  height: 50px;
+  background-color: hsl(0, 0%, 100%);
+ 
+}
+
+.header-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 50px;
+  padding: 10px 0;
+}
+
+.main-container {
+  height: 100%;
+  padding: 35px;
+}
+
+.card {
+  width: 50%;
+  border: none;
+  border: 1px solid #dddddd;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 20px;
+}
+
+/* Button */
+.button {
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transition-duration: 0.1s;
+  background-color: gray;
+}
+
+.button:hover {
+  opacity: 80%;
+}
+
+
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 30rem;
+  z-index: 10;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 15rem);
+}
+
+
+.prodDetailImage{
+  height: 500px;
+  width: 500px;
+  margin-Right: '1rem';
+  padding: 15px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+
+.prodDesc{
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 15px;
+}
+
+.prodPrice{
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+}
+.prodTitle{
+  padding: 15px
+}
+
+.btnBack{
+  color: black;
+  background-color: white;
+  height: 50px;
+  width: 130px;
+  margin-top: 60%;
+  border-radius: 15px;
+}
+
+
+/* home page */
+.hpParent{
+  height: 100vh;
+}
+
+.hpChild1{
+
+  height: 33.33vh;
+}
+.hpChild2{
+  background-color: green;
+}
+.hpChild2txt{
+  font-size: 130px;
+  text-align: center;
+}
+.hpChild3{
+
+  height: 33.33vh;
+}
+
+/* products list */
+.plParent{
+  gap: 15px;
+  padding: 15px;
+}
+
+.p1Child1{
+  padding: 15px;
+  text-align: center;
+}
+
+.p1Child1 h2{
+  font-size: 18px;
+}
+
+.thumbnails{
+  height: 150px;
+  width: 130px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+
+/* product detail */
+
+.pdParent{
+  height: 100%;
+  margin-top: 15px;
+  padding: 15px;
+}
+
+.btnGoback{
+  background-color: white;
+}
+
+
+/* checkout */
+
+.coThumbnail{
+  height: 105px;
+  width: 105px;
+  padding: 15px;
+}
+
+.coParent{
+  padding: 15px;
+  border: 2px solid gray;
+  border-radius: 15px;
+}
+
+.coPrice h4{
+  font-weight: bold;
+}
